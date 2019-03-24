@@ -10,6 +10,8 @@ BEGIN
   );
 END
 
+-- ===================================================================
+
 -- 178 rank scores
 -- 定义变量解法
 select Score, Rank from (
@@ -27,11 +29,16 @@ on s1.Score <= s2.Score
 group by s1.id 
 order by s1.Score desc;
 
+-- ===================================================================
+
 
 -- 180 consecutive numbers 不要使用连等于
 select distinct l1.num as ConsecutiveNums
 from Logs as l1, logs as l2, logs as l3
 where l1.id = l2.id-1 and l2.id = l3.id-1 and l1.num = l2.num and l2.num = l3.num;
+
+-- ===================================================================
+
 
 -- 184 department highest salary max只检索一个结果
 select department.name as Department, employee.name as Employee, employee.Salary
@@ -44,6 +51,9 @@ where (employee.departmentid, employee.salary) in
     from employee
     group by employee.departmentid
 );
+
+-- ===================================================================
+
 
 -- 626 exchange seats coalesce表示直到选择一个非空值
 select s1.id as id, coalesce(s2.student, s1.student) as student 
